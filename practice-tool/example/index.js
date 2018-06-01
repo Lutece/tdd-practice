@@ -20,19 +20,6 @@ app.get('/users', (req, res) => {
   res.json(users.slice(0, limit));
 });
 
-app.get('/users/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  if(Number.isNaN(id)) return res.status(400).end();
-
-  const user = users.filter((user) => {
-    return user.id === id;
-  })[0]; //API 내용도 정확히 알아야겠다.
-
-  if(!user) return res.status(404).end();
-
-  res.json(user);
-});
-
 app.listen(3000, () => {
   console.log('server is on')
 })
